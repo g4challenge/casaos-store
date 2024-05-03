@@ -3,7 +3,7 @@ name: open-webui
 services:
   open-webui:
     container_name: open-webui
-    image: ghcr.io/open-webui/open-webui:0.1.123
+    image: ghcr.io/open-webui/open-webui:v0.1.123
     labels:
       icon: https://avatars.githubusercontent.com/u/158137808?s=48&v=4
     network_mode: bridge
@@ -53,7 +53,7 @@ x-casaos:
     en_us: |
       Open WebUI is an extensible, feature-rich, and user-friendly self-hosted WebUI designed to operate entirely offline. It supports various LLM runners, including Ollama and OpenAI-compatible APIs. For more information, be sure to check out our Open WebUI Documentation.
   developer: tjbck
-  icon: https://raw.githubusercontent.com/mr-manuel/CasaOS-HomeAutomation-AppStore/latest/Apps/Frigate/icon.png
+  icon: https://avatars.githubusercontent.com/u/158137808?s=48&v=4
   index: /
   main: open-webui
   port_map: "8080"

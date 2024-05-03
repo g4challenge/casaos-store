@@ -23,17 +23,13 @@ services:
         target: /etc/localtime
         read_only: true
       - type: bind
-        source: /DATA/AppData/$AppID/config
-        target: /config
-      - type: bind
         source: /DATA/AppData/$AppID/backend
         target: /app/backend/data
     environment:
       - WEBUI_SECRET_KEY=""
-#      - type: tmpfs # Optional: 1GB of memory, reduces SSD/SD Card wear
-#        target: /tmp/cache
-#        tmpfs:
-#          size: 1G
+      - ENV="prod"
+      - OPENAI_API_KEY=""
+      - WEBUI_NAME="My personal Chat"
     x-casaos:
       ports:
         - container: "8080"

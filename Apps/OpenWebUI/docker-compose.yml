@@ -1,0 +1,77 @@
+
+name: open-webui
+services:
+  open-webui:
+    container_name: open-webui
+    image: ghcr.io/open-webui/open-webui:0.1.123
+    labels:
+      icon: https://avatars.githubusercontent.com/u/158137808?s=48&v=4
+    network_mode: bridge
+    ports:
+      - target: 8080
+        published: "8080"
+        protocol: tcp
+    restart: unless-stopped
+    healthcheck:
+      test: curl --fail -s http://localhost:8080/ || exit 1
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+    volumes:
+      - type: bind
+        source: /etc/localtime
+        target: /etc/localtime
+        read_only: true
+      - type: bind
+        source: /DATA/AppData/$AppID/config
+        target: /config
+      - type: bind
+        source: /DATA/AppData/$AppID/backend
+        target: /app/backend/data
+    environment:
+      - WEBUI_SECRET_KEY=""
+#      - type: tmpfs # Optional: 1GB of memory, reduces SSD/SD Card wear
+#        target: /tmp/cache
+#        tmpfs:
+#          size: 1G
+    x-casaos:
+      ports:
+        - container: "8080"
+          description:
+            en_us: "Web GUI port"
+      volumes:
+        - container: /config
+          description:
+            en_us: Contains all configuration files.
+        - container: /media/frigate
+          description:
+            en_us: Contains database and all media files.
+x-casaos:
+  architectures:
+    - amd64
+    - arm64
+    - arm
+  author: g4challenge
+  category: Chat
+  description:
+    en_us: |
+      Open WebUI is an extensible, feature-rich, and user-friendly self-hosted WebUI designed to operate entirely offline. It supports various LLM runners, including Ollama and OpenAI-compatible APIs. For more information, be sure to check out our Open WebUI Documentation.
+  developer: tjbck
+  icon: https://raw.githubusercontent.com/mr-manuel/CasaOS-HomeAutomation-AppStore/latest/Apps/Frigate/icon.png
+  index: /
+  main: open-webui
+  port_map: "8080"
+  project_url: https://github.com/g4challenge/casaos-store
+  screenshot_link:
+    - https://github.com/open-webui/open-webui/raw/main/demo.gif
+  store_app_id: open-webui
+  tagline:
+    en_us: |
+      User-friendly WebUI for LLMs (
+  thumbnail: https://avatars.githubusercontent.com/u/158137808?s=48&v=4
+  tips:
+    before_install:
+      en_us: |
+        OpenWebUI opens port 8080
+  title:
+    en_us: Open WebUI 

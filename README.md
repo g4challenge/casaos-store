@@ -6,3 +6,4 @@ A CasaOS custom Appstore containing some additional images needed to make things
 ```
 https://github.com/g4challenge/casaos-store/archive/refs/heads/master.zip
 ```
+

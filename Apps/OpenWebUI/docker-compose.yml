@@ -1,8 +1,8 @@
 
-name: open-webui
+name: open-webui-casaos
 services:
   open-webui:
-    container_name: open-webui
+    container_name: open-webui-casaos
     image: ghcr.io/open-webui/open-webui:v0.1.123
     labels:
       icon: https://avatars.githubusercontent.com/u/158137808?s=48&v=4
@@ -39,7 +39,7 @@ services:
         - container: /config
           description:
             en_us: Contains all configuration files.
-        - container: /media/frigate
+        - container: /app/backend/data
           description:
             en_us: Contains database and all media files.
 x-casaos:

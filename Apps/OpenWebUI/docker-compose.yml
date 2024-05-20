@@ -3,7 +3,7 @@ name: open-webui-casaos
 services:
   open-webui:
     container_name: open-webui-casaos
-    image: ghcr.io/open-webui/open-webui:v0.1.123
+    image: ghcr.io/open-webui/open-webui:v0.1.125
     labels:
       icon: https://avatars.githubusercontent.com/u/158137808?s=48&v=4
     network_mode: bridge
